@@ -1,0 +1,1 @@
+﻿const db = require('./config/db'); async function test() { try { const params=[]; const [res] = await db.execute('SELECT * FROM agents WHERE 1=1 ORDER BY created_at DESC LIMIT ? OFFSET ?', [...params, 10, 0]); console.log('success:', res.length); } catch (err) { console.error('error:', err); } finally { process.exit(); } }; test();

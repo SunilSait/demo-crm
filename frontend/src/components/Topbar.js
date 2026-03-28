@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 
-const Topbar = ({ searchPlaceholder = 'Search agents, Inspectors etc', onSearch }) => {
+const Topbar = ({ hideSearch, searchPlaceholder = 'Search agents, Inspectors etc', onSearch }) => {
   const { user } = useAuth();
   const initials = user?.full_name
     ? user.full_name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)
@@ -9,16 +9,18 @@ const Topbar = ({ searchPlaceholder = 'Search agents, Inspectors etc', onSearch 
 
   return (
     <header className="topbar">
-      <div className="topbar-search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-        <input
-          type="text"
-          placeholder={searchPlaceholder}
-          onChange={e => onSearch && onSearch(e.target.value)}
-        />
-      </div>
+      {!hideSearch ? (
+        <div className="topbar-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input
+            type="text"
+            placeholder={searchPlaceholder}
+            onChange={e => onSearch && onSearch(e.target.value)}
+          />
+        </div>
+      ) : <div />}
 
       <div className="topbar-actions">
         <button className="notif-btn">

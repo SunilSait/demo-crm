@@ -9,7 +9,9 @@ router.use(authMiddleware);
 // GET /api/agents - List all agents with pagination, search, filter
 router.get('/', async (req, res) => {
   const { page = 1, limit = 10, search = '', status = '' } = req.query;
-  const offset = (parseInt(page) - 1) * parseInt(limit);
+  const pageNum = Math.max(1, parseInt(page) || 1);
+  const limitNum = Math.max(1, parseInt(limit) || 10);
+  const offset = (pageNum - 1) * limitNum;
 
   let whereClause = 'WHERE 1=1';
   const params = [];
@@ -32,8 +34,8 @@ router.get('/', async (req, res) => {
     const total = countResult[0].total;
 
     const [agents] = await db.execute(
-      `SELECT * FROM agents ${whereClause} ORDER BY created_at DESC LIMIT ? OFFSET ?`,
-      [...params, parseInt(limit), offset]
+      `SELECT * FROM agents ${whereClause} ORDER BY created_at DESC LIMIT ${limitNum} OFFSET ${offset}`,
+      params
     );
 
     res.status(200).json({
@@ -41,9 +43,9 @@ router.get('/', async (req, res) => {
       data: agents,
       pagination: {
         total,
-        page: parseInt(page),
-        limit: parseInt(limit),
-        totalPages: Math.ceil(total / parseInt(limit))
+        page: pageNum,
+        limit: limitNum,
+        totalPages: Math.ceil(total / limitNum)
       }
     });
   } catch (error) {

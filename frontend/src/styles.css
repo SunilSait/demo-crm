@@ -1224,7 +1224,9 @@ color: #1F3C88;
 
 /* Label floats to top border when input is focused or has value */
 .float-input-box:focus-within .float-label,
-.float-input-box.has-value .float-label {
+.float-input-box.has-value .float-label,
+.float-input-box:has(.float-input:-webkit-autofill) .float-label,
+.float-input-box:has(.float-input:autofill) .float-label {
   top: -20px;
   left: 26px;
   transform: translateY(0);
@@ -1249,13 +1251,24 @@ color: #1F3C88;
   width: 100%;
 }
 
+.float-input:-webkit-autofill,
+.float-input:-webkit-autofill:hover, 
+.float-input:-webkit-autofill:focus, 
+.float-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #100F0F !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: transparent !important;
+}
+
 .float-input::placeholder {
   color: transparent;
 }
 
 /* Show placeholder only when the label has floated up */
 .float-input-box:focus-within .float-input::placeholder,
-.float-input-box.has-value .float-input::placeholder {
+.float-input-box.has-value .float-input::placeholder,
+.float-input-box:has(.float-input:-webkit-autofill) .float-input::placeholder {
   color: #100F0F;
 }
 

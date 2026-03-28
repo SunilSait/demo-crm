@@ -87,8 +87,8 @@ router.post('/', async (req, res) => {
     }
 
     const [result] = await db.execute(
-      'INSERT INTO agents (agent_name, company_name, email, phone, properties, inspections, status, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-      [agent_name, company_name, email, phone, parseInt(properties), parseInt(inspections), status, req.user.id]
+      'INSERT INTO agents (agent_name, company_name, email, phone, properties, inspections, status, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())',
+      [agent_name, company_name, email, phone, parseInt(properties) || 0, parseInt(inspections) || 0, status, req.user.id]
     );
 
     const [newAgent] = await db.execute('SELECT * FROM agents WHERE id = ?', [result.insertId]);

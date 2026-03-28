@@ -196,7 +196,7 @@ const Agents = () => {
                     <td className="agent-name">{agent.agent_name}</td>
                     <td>{agent.company_name}</td>
                     <td className="email-cell" title={agent.email}>
-                      {agent.email.length > 22 ? agent.email.slice(0, 22) + '...' : agent.email}
+                      {agent.email.length > 15 ? agent.email.slice(0, 15) + '...' : agent.email}
                     </td>
                     <td>{agent.phone}</td>
                     <td className="center">{agent.properties}</td>

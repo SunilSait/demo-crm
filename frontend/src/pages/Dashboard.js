@@ -28,17 +28,17 @@ const QuickAction = ({ label, icon, to }) => (
 );
 
 const statusClass = (s) => {
-  const map = { Pending: 'badge-pending', Assigned: 'badge-assigned', Active: 'badge-active', Completed: 'badge-completed', Closed: 'badge-closed', Cancelled: 'badge-cancelled' };
+  const map = { Pending: 'badge-pending', Assigned: 'badge-assigned', Active: 'badge-assigned', Completed: 'badge-completed', Closed: 'badge-closed', Cancelled: 'badge-cancelled' };
   return map[s] || 'badge-default';
 };
 
 const MOCK_ACTIVITY = [
-  { id: 'INSP-10245', property: 'Greenview apartme...', agent: 'Bluenest reality', inspector: 'John Mathews', status: 'Pending', updated: '2 mins ago' },
-  { id: 'INSP-10244', property: 'Palm residency - Villa', agent: 'Urbankey estates', inspector: 'Sarah Collins', status: 'Assigned', updated: '1 hour ago' },
-  { id: 'INSP-10243', property: 'Lakeview towers', agent: 'Bluenest reality', inspector: 'Mark Robinson', status: 'Active', updated: 'Today, 11.30 AM' },
-  { id: 'INSP-10242', property: 'Maple street house', agent: 'Primelet agents', inspector: 'Emma Watson', status: 'Completed', updated: '2 days ago' },
-  { id: 'INSP-10241', property: 'Sunrise commercial complex', agent: 'Urbankey estates', inspector: 'David Lee', status: 'Closed', updated: '3 days ago' },
-  { id: 'INSP-10240', property: 'Oakwood cottage', agent: 'Primelet agents', inspector: 'Emma Watson', status: 'Cancelled', updated: '5 days ago' },
+  { id: 'INSP - 10245', property: 'Greemview apartme...', agent: 'Bluenest reality', inspector: 'John mathews', status: 'Pending', updated: '2 mins ago' },
+  { id: 'INSP - 10244', property: 'Palm residency - Villa', agent: 'Urbankey estates', inspector: 'Sarah collins', status: 'Assigned', updated: '1 hour ago' },
+  { id: 'INSP - 10243', property: 'Lakeview towers', agent: 'Bluenest reality', inspector: 'Mark robinson', status: 'Active', updated: 'Today, 11.30 AM' },
+  { id: 'INSP - 10242', property: 'Maple street house', agent: 'Primelet agents', inspector: 'Emma watson', status: 'Completed', updated: '2 days ago' },
+  { id: 'INSP - 10243', property: 'Sunrise commercial complex', agent: 'Urbankey estates', inspector: 'David lee', status: 'Closed', updated: '3 days ago' },
+  { id: 'INSP - 10242', property: 'Oakwood cottage', agent: 'Primelet agents', inspector: 'Emma watson', status: 'Cancelled', updated: '5 days ago' },
 ];
 
 const Dashboard = () => {

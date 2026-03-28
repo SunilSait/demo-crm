@@ -600,20 +600,14 @@ color: #555555;
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
-  border-radius: 20px;
+  justify-content: center;
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
   width: 100px;
-height: 29px;
-border-radius: 8px;
-
-padding-top: 6px;
-padding-right: 16px;
-padding-bottom: 6px;
-padding-left: 16px;
-
+  height: 29px;
+  border-radius: 8px;
+  padding: 6px 16px;
 }
 
 .badge-pending {

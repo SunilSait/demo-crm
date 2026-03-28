@@ -235,7 +235,7 @@ const Agents = () => {
           {pagination.totalPages > 1 && (
             <div className="pagination">
               <span className="pagination-info">
-                {pagination.total} rows · Page {pagination.page} of {pagination.totalPages}
+                {pagination.page} of {pagination.total} rows selected
               </span>
               <div className="pagination-controls">
                 <button
